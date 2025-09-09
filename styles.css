@@ -1,0 +1,94 @@
+/* Minimal, clean styling */
+:root{
+  --bg: #0b0e13;
+  --panel: #10151d;
+  --ink: #e7effa;
+  --muted: #9fb3c8;
+  --accent: #58d68d;
+  --accent-2: #5dade2;
+  --danger: #ff6b6b;
+  --grid: #17202a;
+  font-synthesis-weight: none;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: radial-gradient(1200px 800px at 30% -10%, #132030 0%, #0b0e13 50%, #090b0f 100%);
+  color:var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  display:flex; flex-direction:column; gap:16px;
+}
+
+.app-header, .app-footer{
+  text-align:center;
+  padding:12px 16px;
+}
+.app-header h1{margin:.2rem 0 0}
+.stats{display:flex; gap:16px; justify-content:center; color:var(--muted); font-size:.95rem}
+
+.app-main{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:16px;
+  place-items:center;
+  padding: 0 16px 16px;
+}
+.canvas-wrap{
+  position:relative;
+  width:min(92vw, 640px);
+  aspect-ratio:1/1;
+  background:linear-gradient(180deg, #0c1219, #0a0f15);
+  border:1px solid #1b2634;
+  border-radius:20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,0.03);
+  overflow:hidden;
+}
+#game{width:100%; height:100%; display:block}
+.overlay{
+  position:absolute; inset:0; display:grid; place-items:center;
+  background:rgba(8,12,18,.66); backdrop-filter: blur(6px);
+}
+.card{
+  background:var(--panel);
+  border:1px solid #1f2a36;
+  padding:20px;
+  border-radius:16px;
+  width:min(90%, 420px);
+  text-align:center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+.card h2{margin:0 0 8px}
+.card p{margin:0 0 16px; color:var(--muted)}
+.actions{display:flex; gap:10px; justify-content:center}
+.btn{
+  background:#151d28;
+  color:var(--ink);
+  border:1px solid #223246;
+  border-radius:12px;
+  padding:10px 14px;
+  cursor:pointer;
+  transition:.15s transform ease, .2s background ease;
+}
+.btn:hover{transform:translateY(-1px); background:#1a2330}
+.btn.primary{background: linear-gradient(180deg, #2ecc71, #27ae60); border-color:#229954}
+.btn.big{padding:14px 18px; font-size:1.05rem}
+.dpad{
+  width:64px; height:64px; border-radius:16px; background:#121923; color:var(--ink);
+  border:1px solid #243448; font-size:1.2rem;
+}
+.controls{display:grid; gap:12px; place-items:center}
+.controls .row{display:flex; gap:12px}
+.sliders{display:flex; gap:18px; color:var(--muted); flex-wrap:wrap; justify-content:center}
+label{display:flex; align-items:center; gap:8px}
+
+@media (min-width: 900px){
+  .app-main{
+    grid-template-columns: min(64vw, 680px) 1fr;
+    align-items:start;
+  }
+}
+
+/* Ensure overlays truly disappear when 'hidden' is set */
+.overlay[hidden]{display:none !important}

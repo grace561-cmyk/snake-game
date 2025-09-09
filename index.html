@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake — Minimal Web Game</title>
+  <meta name="description" content="A lightweight, responsive Snake game built with vanilla JavaScript." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐍</text></svg>">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>🐍 Snake</h1>
+    <div class="stats">
+      <div>Score: <span id="score">0</span></div>
+      <div>High: <span id="high">0</span></div>
+      <div>Speed: <span id="speedDisplay">1x</span></div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="canvas-wrap">
+      <canvas id="game" width="600" height="600" aria-label="Snake game board" role="img"></canvas>
+      <div class="overlay" id="overlay" hidden>
+        <div class="card">
+          <h2 id="overlayTitle">Game Paused</h2>
+          <p id="overlayMsg">Press Space or Tap ▶ to resume</p>
+          <div class="actions">
+            <button id="resumeBtn" class="btn primary">▶ Resume</button>
+            <button id="restartBtn" class="btn">⟲ Restart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="row">
+        <button id="up" class="dpad">▲</button>
+      </div>
+      <div class="row">
+        <button id="left" class="dpad">◄</button>
+        <button id="pause" class="btn big">⏯</button>
+        <button id="right" class="dpad">►</button>
+      </div>
+      <div class="row">
+        <button id="down" class="dpad">▼</button>
+      </div>
+      <div class="sliders">
+        <label>Speed
+          <input id="speed" type="range" min="1" max="5" value="1" step="1" />
+        </label>
+        <label>Grid
+          <input id="grid" type="range" min="12" max="35" value="25" step="1" />
+        </label>
+      </div>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      Controls: Arrow Keys / WASD • Space: Pause • Enter: Restart • Touch / D‑Pad supported.
+    </p>
+    <p>
+      Built with vanilla JS. Host anywhere (GitHub Pages, Netlify, Vercel).
+    </p>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>
